@@ -81,6 +81,21 @@ function checkStrength(password) {
     strengthBarEl.value = strength;
 }
 
+function updateLength(direction) {
+    if (direction == "up") {
+        passLengthInputEl.value++;
+        if (passLengthInputEl.value >= 32) {
+            passLengthInputEl.value = 32;
+        }
+    }
+    if (direction == "down") {
+        passLengthInputEl.value--;
+        if (passLengthInputEl.value <= 8) {
+            passLengthInputEl.value = 8;
+        }
+    }
+}
+
 function copyToClipboard() {
     passwordDisplayEl.select();
     document.execCommand("copy");

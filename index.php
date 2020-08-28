@@ -8,14 +8,14 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
     <script src="app.js" async defer></script>
-</head>
 
-<style>
-    progress {
-        width: 100%;
-        height: 40px;
-    }
-</style>
+    <style>
+        progress {
+            width: 100%;
+            height: 40px;
+        }
+    </style>
+</head>
 
 <body>
     
@@ -42,7 +42,9 @@
         <div class="custom-control custom-radio custom-control-inline">
             <div class="row">
                 <div class="col">
-                    <input type="text" id="passLength" placeholder="Length" class="form-control" value="8">
+                    <button class="btn btn-dark mb-2" onclick="updateLength('down')">&minus;</button>
+                    <button class="btn btn-dark mb-2" onclick="updateLength('up')">&plus;</button>
+                    <input type="text" id="passLength" placeholder="Length" class="form-control" value="10">
                     <span class="text-muted"><small>
                         Min: 8<br />
                         Recommended: 12
