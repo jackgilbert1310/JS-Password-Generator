@@ -64,16 +64,19 @@ function generateCharSet() {
 function checkStrength(password) {
     var strength = 0;
     if (password.match(/[a-z]+/)) {
-        strength += 25;
+        strength += 20;
     }
     if (password.match(/[A-Z]+/)) {
-        strength += 25;
+        strength += 20;
     }
     if (password.match(/[0-9]+/)) {
-        strength += 25;
+        strength += 20;
     }
     if (password.match(/[$@#&!]+/)) {
-        strength += 25;
+        strength += 20;
+    }
+    if (password.length >= 12) {
+        strength += 20;
     }
     strengthBarEl.value = strength;
 }

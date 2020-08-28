@@ -43,6 +43,10 @@
             <div class="row">
                 <div class="col">
                     <input type="text" id="passLength" placeholder="Length" class="form-control" value="8">
+                    <span class="text-muted"><small>
+                        Min: 8<br />
+                        Recommended: 12
+                    </small></span>
                 </div>
                 <div class="col">
                     Include Uppercase? <input type="checkbox" id="includeUppercase" checked>
