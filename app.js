@@ -1,8 +1,9 @@
 // Variable declaration
-var passwordDisplay = document.getElementById('password');
-var passLengthInput = document.getElementById('passLength');
+var passwordDisplayEl = document.getElementById('password');
+var passLengthInputEl = document.getElementById('passLength');
 var generatePassBtnEl = document.getElementById('generatePassBtn');
 var copyPassBtnEl = document.getElementById('copyPassBtn');
+var strengthBarEl = document.getElementById('strengthBar');
 
 var uppercaseCheckBoxEl = document.getElementById('includeUppercase');
 var lowercaseCheckBoxEl = document.getElementById('includeLowercase');
@@ -12,30 +13,31 @@ var symbolCheckBoxEl = document.getElementById('includeSymbols');
 var uppercaseCharSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var lowercaseCharSet = "abcdefghijklmnopqrstuvwxyz";
 var numberCharSet = "0123456789";
-var symbolCharSet = `¬¦!"£$%^&*()_+-={}[];:'@#~,<.>/?`;
+var symbolCharSet = `$@#&!`;
 
 var charSet = "";
 
 // Function declaration
 function checkPassValue() {
-    if (passwordDisplay.value == "") {
-        passwordDisplay.disabled = true;
+    if (passwordDisplayEl.value == "") {
+        passwordDisplayEl.disabled = true;
     } else {
-        passwordDisplay.disabled = false;
+        passwordDisplayEl.disabled = false;
     }
 }
 
 function generatePassword() {
     var charSet = generateCharSet();
     var password = '';
-    if (passLengthInput.value <= 8) {
-        passLengthInput.value = 8;
+    if (passLengthInputEl.value <= 8) {
+        passLengthInputEl.value = 8;
     }
-    for (var i = 0; i < passLengthInput.value; i++) {
+    for (var i = 0; i < passLengthInputEl.value; i++) {
         var randomPosition = Math.floor(Math.random() * charSet.length);
         password += charSet.substring(randomPosition, randomPosition + 1);
     }
-    passwordDisplay.value = password;
+    passwordDisplayEl.value = password;
+    checkStrength(password);
     return password;
 }
 
@@ -59,8 +61,25 @@ function generateCharSet() {
     return charset;
 }
 
+function checkStrength(password) {
+    var strength = 0;
+    if (password.match(/[a-z]+/)) {
+        strength += 25;
+    }
+    if (password.match(/[A-Z]+/)) {
+        strength += 25;
+    }
+    if (password.match(/[0-9]+/)) {
+        strength += 25;
+    }
+    if (password.match(/[$@#&!]+/)) {
+        strength += 25;
+    }
+    strengthBarEl.value = strength;
+}
+
 function copyToClipboard() {
-    passwordDisplay.select();
+    passwordDisplayEl.select();
     document.execCommand("copy");
     alert('Copied password to clipboard');
 }
